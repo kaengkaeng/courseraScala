@@ -8,8 +8,17 @@ def gcd(a:Int, b:Int):Int =
 
 
 /*Tail Recursion*/
-@tailrec
+@tailrec // vermeiden for stackoverflow
 def tail_fac(n:Int, acc:Int):Int =
   if (n <=1) acc
   else fac(n-1, n*acc)
+
+def sum (f:Int =>Int, a:Int, b:Int):Int = {
+  def loop(a:Int, acc:Int):Int =
+    if a > b then acc
+    else loop(a+1, acc+f(a))
+  loop(a,0)
+}
+
+// f:Int => Int wenn Funktion aufrutf, dann expression
 
